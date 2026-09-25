@@ -17,8 +17,9 @@ import time
 app = Flask(__name__)
 
 # Port command line se lenge (5001, 5002, 5003)
-PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 5001
-NODE_NAME = f"node_{PORT}"
+NODE_ID = os.environ.get("NODE_ID", sys.argv[1] if len(sys.argv) > 1 else "5001")
+NODE_NAME = f"node_{NODE_ID}"
+PORT = int(os.environ.get("PORT", NODE_ID))
 STORAGE_DIR = os.path.join(os.path.dirname(__file__), "storage", NODE_NAME)
 os.makedirs(STORAGE_DIR, exist_ok=True)
 
