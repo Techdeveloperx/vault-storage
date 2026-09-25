@@ -12,12 +12,13 @@ Kaise chalao (gateway aur nodes chalu hone ke baad, alag terminal mein):
 
 import requests
 import time
+import os
 import metadata_store
 
 NODES = [
-    "http://localhost:5001",
-    "http://localhost:5002",
-    "http://localhost:5003",
+    os.environ["NODE_1_URL"],
+    os.environ["NODE_2_URL"],
+    os.environ["NODE_3_URL"],
 ]
 
 CHECK_INTERVAL_SECONDS = 10  # har 10 second mein check karega
