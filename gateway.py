@@ -11,6 +11,7 @@ Kaise chalao:
 from flask import Flask, request, jsonify
 import requests
 import time
+import os
 import hashlib
 import metadata_store
 
@@ -19,10 +20,12 @@ app = Flask(__name__)
 # Yahan apne 3 nodes ke addresses daalo
 # Localhost pe test karte waqt yeh use karo, server pe deploy karte waqt
 # inko actual server URLs se replace kar dena
+import os
+
 NODES = [
-    "http://localhost:5001",
-    "http://localhost:5002",
-    "http://localhost:5003",
+    os.environ["NODE_1_URL"],
+    os.environ["NODE_2_URL"],
+    os.environ["NODE_3_URL"],
 ]
 
 WRITE_QUORUM = 2  # kam se kam itni copies confirm honi chahiye tabhi "success" bolenge
