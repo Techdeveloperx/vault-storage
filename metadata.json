@@ -1,0 +1,17 @@
+{
+  "test.txt": {
+    "target_nodes": [
+      "http://localhost:5001",
+      "http://localhost:5002",
+      "http://localhost:5003"
+    ],
+    "confirmed_nodes": [
+      "http://localhost:5001",
+      "http://localhost:5002",
+      "http://localhost:5003"
+    ],
+    "checksum": "4a63297d12a42ed9d62f1cc5ba522f85b26feaea5fd08353849a8823896355c8",
+    "timestamp": 1790366288.3436434,
+    "replication_factor": 3
+  }
+}
