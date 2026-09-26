@@ -1,14 +1,5 @@
-"""
-GATEWAY — main entry point
-User yahan se file upload/download karega
-Yeh hi replication aur quorum ka logic handle karta hai
-
-Kaise chalao:
-    python gateway.py
-(Pehle teeno nodes chala lena: node_server.py 5001, 5002, 5003)
-"""
-
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 import time
 import os
@@ -16,11 +7,18 @@ import hashlib
 import metadata_store
 
 app = Flask(__name__)
+CORS(app)
 
+NODES = [
+    os.environ["NODE_1_URL"],
+    os.environ["NODE_2_URL"],
+    os.environ["NODE_3_URL"],
+]
+
+WRITE_QUORUM = 2
 # Yahan apne 3 nodes ke addresses daalo
 # Localhost pe test karte waqt yeh use karo, server pe deploy karte waqt
 # inko actual server URLs se replace kar dena
-import os
 
 NODES = [
     os.environ["NODE_1_URL"],
